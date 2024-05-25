@@ -45,6 +45,7 @@ dependencies:
   get:
   sqflite:
   flutter_staggered_animations:
+  equatable: ^2.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

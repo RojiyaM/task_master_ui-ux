@@ -13,6 +13,7 @@ import 'package:run/screens/detail/add_taskbar.dart';
 import 'package:run/screens/detail/widgets/button.dart';
 import 'package:run/screens/detail/widgets/date_picker.dart';
 import 'package:run/screens/detail/widgets/task_tile.dart';
+import 'package:run/screens/home/notification.dart';
 
 class DetailPage extends StatefulWidget {
   final Task task;
@@ -252,10 +253,11 @@ class _DetailPageState extends State<DetailPage> {
           ),
           iconSize: 20),
       actions: [
-        Icon(
-          Icons.notification_add_rounded,
-          size: 40,
-          color: Colors.black,
+        GestureDetector(
+          onTap: () async {
+            await Get.to(() => NotificationPage());
+          },
+          child: Icon(Icons.notification_add, color: Colors.black, size: 40),
         ),
         Icon(
           Icons.more_vert,

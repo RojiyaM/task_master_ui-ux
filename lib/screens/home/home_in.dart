@@ -2,50 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:run/constants/colors.dart';
-import 'package:run/screens/home/home_in.dart';
 import 'package:run/screens/home/notification.dart';
 import 'package:run/screens/home/report.dart';
 import 'package:run/widgets/go_premium.dart';
 import 'package:run/widgets/tasks.dart';
 
-class HomeMainPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  State<HomeMainPage> createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomeMainPage> {
-  PageController pageController = PageController();
-  List<Widget> pages = [HomePage(), ReportPage()];
-  int selectIndex = 0;
-  void onPageChanged(int index) {
-    setState(() {
-      selectIndex = index;
-    });
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: _buildAppBar(),
-      body: PageView(
-        controller: pageController,
-        children: pages,
-        onPageChanged: onPageChanged,
-      ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        elevation: 0,
-        backgroundColor: Colors.black,
-        onPressed: () {},
-        child: Icon(
-          Icons.add,
-          size: 35,
-          color: Colors.white,
-        ),
+      appBar: _buildAppBar(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // GoPremium(),
+          SizedBox(
+            height: 70,
+          ),
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Text(
+              'My Tasks Category',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Expanded(child: Tasks())
+        ],
       ),
     );
   }
@@ -74,31 +62,21 @@ class _HomePageState extends State<HomeMainPage> {
           showUnselectedLabels: false,
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.grey.withOpacity(0.5),
-          onTap: onItemTap,
           items: [
             BottomNavigationBarItem(
                 label: 'Home',
                 icon: Icon(
                   Icons.home_rounded,
                   size: 30,
-                  color: selectIndex == 0 ? kBlueDark : Colors.grey,
                 )),
             BottomNavigationBarItem(
               label: 'Report',
-              icon: Icon(
-                Icons.bar_chart,
-                size: 30,
-                color: selectIndex == 1 ? kBlueDark : Colors.grey,
-              ),
+              icon: Icon(Icons.bar_chart, size: 30),
             )
           ],
         ),
       ),
     );
-  }
-
-  void onItemTap(int selectedItem) {
-    pageController.jumpToPage(selectedItem);
   }
 
   AppBar _buildAppBar() {

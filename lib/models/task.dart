@@ -31,7 +31,7 @@ class Task {
           left: 3,
           done: 1),
       Task(
-          iconData: Icons.person_rounded,
+          iconData: Icons.work,
           title: 'Work',
           bgColor: kBlueLight,
           iconColor: kBlueDark,
@@ -39,7 +39,7 @@ class Task {
           left: 3,
           done: 1),
       Task(
-          iconData: Icons.person_rounded,
+          iconData: Icons.health_and_safety,
           title: 'Health',
           bgColor: kRedLight,
           iconColor: kRedDark,

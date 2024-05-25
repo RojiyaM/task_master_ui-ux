@@ -7,6 +7,7 @@ import 'package:run/controllers/task_controller.dart';
 import 'package:run/models/add_task.dart';
 import 'package:run/screens/detail/widgets/button.dart';
 import 'package:run/screens/detail/widgets/input_field.dart';
+import 'package:run/screens/home/notification.dart';
 
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({super.key});
@@ -204,10 +205,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
         child: Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
       ),
       actions: [
-        Icon(
-          Icons.notification_add_rounded,
-          size: 40,
-          color: Colors.black,
+        GestureDetector(
+          onTap: () async {
+            await Get.to(() => NotificationPage());
+          },
+          child: Icon(Icons.notification_add, color: Colors.black, size: 40),
         ),
         Icon(
           Icons.more_vert,
